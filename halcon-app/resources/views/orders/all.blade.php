@@ -49,6 +49,9 @@
             <div class="col">
                 <h1 class="bg-primary text-white py-4 text-center">Orders (General)</h1>
             </div>
+            <div class="col-4 text-end"> <!-- Utilizamos una columna de 6 para alinear el botón a la derecha -->
+                <button type="button" class="btn btn-success mt-4 me-3">Place order</button>
+            </div>
         </div>
         <div class="row">
             <div class="col">
@@ -97,7 +100,7 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button type="submit" class="btn btn-primary">Accept order</button>
+                                    <button type="submit" class="btn btn-primary">Update order</button>
                                     <button type="submit" class="btn btn-danger">Decline order</button>
                                 </td>
                             </tr>
