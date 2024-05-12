@@ -14,13 +14,13 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('customer_id')->references('id')->on('customers');
-            $table->foreignId('status_id')->references('id')->on('statuses');
+            $table->foreignId('status_id')->default(1)->references('id')->on('statuses');
             $table->foreignId('product_id')->references('id')->on('products');
             $table->string('address',1000);
-            $table->date('order_date');
+            $table->date('order_date')->default(DB::raw('CURRENT_TIMESTAMP'));
             $table->integer('ordered_quantity');
-            $table->string('PathPhoto1',400)->nullable();
-            $table->string('PathPhoto2',400)->nullable();
+            $table->string('PathPhoto1',400)->nullable()->default(null);
+            $table->string('PathPhoto2',400)->nullable()->default(null);
             $table->boolean('active');
             $table->timestamps();
         });

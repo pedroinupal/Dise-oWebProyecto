@@ -10,10 +10,7 @@ class ProductController extends Controller
     public function index()
     {
     
-    $products = Product::join('suppliers','suppliers.id', '=','products.supplier_id')
-    ->select('products.id','product_name','available_quantity','suppliers.company_name')
-    ->orderby('products.id','asc')
-    ->get();
+    $products = Product::todos_los_productos();
     
     return view('products.index',compact('products'));
 

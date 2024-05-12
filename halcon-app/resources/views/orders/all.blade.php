@@ -42,6 +42,10 @@
     </style>
     
 </head>
+<header>
+    @include('components.nav-bar')
+</header>
+ 
 <body>
    <div class="container">
    <section class="edge-to-edge">
@@ -50,7 +54,7 @@
                 <h1 class="bg-primary text-white py-4 text-center">Orders (General)</h1>
             </div>
             <div class="col-4 text-end"> <!-- Utilizamos una columna de 6 para alinear el botón a la derecha -->
-                <button type="button" class="btn btn-success mt-4 me-3">Place order</button>
+                <a type="button" href="{{route('orders.create')}}" class="btn btn-success mt-4 me-3">Place order</a>
             </div>
         </div>
         <div class="row">
@@ -100,8 +104,14 @@
                                     @endif
                                 </td>
                                 <td>
-                                    <button type="submit" class="btn btn-primary">Update order</button>
-                                    <button type="submit" class="btn btn-danger">Decline order</button>
+                                    <a href="{{ route('orders.edit',$item->id)}}" class="btn btn-primary">Update order</a>
+            
+                                    <form action="{{ route('orders.destroy', $item->id) }}" method="post">
+                                        @csrf
+                                        @method('delete')
+
+                                        <input type="submit" value="Decline Order" class="btn btn-danger" onclick="return confirm('Please confirm the deletion of the order')">
+                                    </form>    
                                 </td>
                             </tr>
 

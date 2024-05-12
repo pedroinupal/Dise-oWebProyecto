@@ -45,6 +45,9 @@
     </style>
     
 </head>
+<header>
+    @include('components.nav-bar')
+</header>
 <body>
    <div class="container">
    <section class="edge-to-edge">
@@ -75,7 +78,7 @@
                         <tbody>
 
                              @foreach ($orders as $item)
-
+                             @if($item->status <> 'DELIVERED' && $item->status <> 'IN ROUTE')
                             <tr>
                                 <td> {{$item->id}}</td>
                                 <td> {{$item->username}}</td>
@@ -88,8 +91,14 @@
                                 <td>
                                     @if($item->PathPhoto1)
                                         <img src="{{$item->PathPhoto1}}" alt="" class="w-300 img-fluid">
+                                    @elseif($item->status == 'IN PROCESS')
+                                        <form action="{{ route('orders.update_photo', ['id' => $item->id, 'photo' => 1]) }}" method="POST">
+                                        @csrf
+                                        @method('post')
+                                            <button type="submit" class="btn btn-primary">Upload Photo</button>
+                                        </form>
                                     @else
-                                        <button type="submit" class="btn btn-primary">Upload Photo</button>
+                                        Mark the order as in progress to continue
                                     @endif
                                 </td>
                                 <td>
@@ -103,9 +112,17 @@
                                 @if($item->ordered_quantity <= $item->available_quantity)
 
                                     @if($item->PathPhoto1)
+                                    <form action="{{ route('orders.update_status', ['id' => $item->id, 'status' => 3]) }}" method="POST">
+                                    @csrf
+                                    @method('post')
                                         <button type="submit" class="btn btn-danger">Mark as: In route</button>
-                                    @else
-                                        <button type="submit" class="btn btn-primary">Mark as: In progress</button>
+                                    </form>
+                                    @elseif($item->status <> 'IN PROCESS')
+                                    <form action="{{ route('orders.update_status', ['id' => $item->id, 'status' => 2]) }}" method="POST">
+                                    @csrf
+                                    @method('post')
+                                        <button type="submit" class="btn btn-primary">Mark as: In process</button>
+                                    </form>
                                     @endif
                                        
                                 @else
@@ -114,7 +131,7 @@
                                     
                                 </td>
                             </tr>
-
+                            @endif
                             @endforeach
 
                         </tbody>

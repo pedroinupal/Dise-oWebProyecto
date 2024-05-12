@@ -18,15 +18,15 @@ class RoleSeeder extends Seeder
         $role->save();
 
         $role = new role;
-        $role->role = "Purchasing";
-        $role->save();
-
-        $role = new role;
         $role->role = "Warehouse";
         $role->save();
 
         $role = new role;
         $role->role = "Route";
+        $role->save();
+
+        $role = new role;
+        $role->role = "Admin";
         $role->save();
     }
 }

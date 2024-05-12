@@ -10,9 +10,7 @@ class CustomerController extends Controller
     public function index()
     {
     
-    $customers = Customer::select('customers.id','name','username','rfc')
-    ->orderby('customers.id','asc')
-    ->get();
+    $customers = Customer::todos_los_clientes();
     
     return view('customers.index',compact('customers'));
 

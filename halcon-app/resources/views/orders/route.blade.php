@@ -44,6 +44,9 @@
     </style>
     
 </head>
+<header>
+    @include('components.nav-bar')
+</header>
 <body>
    <div class="container">
    <section class="edge-to-edge">
@@ -71,9 +74,10 @@
                                 <th>Actions</th>
                             </tr>
                         </thead>
-                        <tbody>
+                        <tbody> 
 
                              @foreach ($orders as $item)
+                             @if($item->status == 'IN ROUTE' && $item->PathPhoto1)
 
                             <tr>
                                 <td> {{$item->id}}</td>
@@ -96,7 +100,11 @@
                                         @if($item->PathPhoto2)
                                             <img src="{{$item->PathPhoto2}}" alt="" class="w-300 img-fluid">
                                         @else
+                                        <form action="{{ route('orders.update_photo', ['id' => $item->id, 'photo' => 2]) }}" method="POST">
+                                            @csrf
+                                            @method('post')
                                             <button type="submit" class="btn btn-primary">Upload Photo</button>
+                                        </form>
                                         @endif
                                     @else
                                         NO IMAGE
@@ -105,7 +113,11 @@
                                 <td>
                                     @if($item->PathPhoto1)
                                         @if($item->PathPhoto2)
+                                        <form action="{{ route('orders.update_status', ['id' => $item->id, 'status' => 4]) }}" method="POST">
+                                            @csrf
+                                            @method('post')
                                             <button type="submit" class="btn btn-success">Order complete</button>
+                                        </form>  
                                         @else
                                             NOT AVAILABLE UNTIL DELIVERY PROOF IS UPLOADED
                                         @endif
@@ -114,7 +126,7 @@
                                     @endif
                                 </td>
                             </tr>
-
+                            @endif
                             @endforeach
 
                         </tbody>
