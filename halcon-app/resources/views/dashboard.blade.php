@@ -51,5 +51,12 @@
         </div>
     </div>
 </nav>
+<div class="container" style="display: flex; align-items: center;">
+    <img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihYMznxVPu8Sxmm_bqDll-nv_fboGXcTO8kY0KLa9gQL7H1vK_upUUJyoxfwXZqRUVi-_nEbzsrExI3T-hW11A8Z0aF9-Thhew=s2560" alt="Company Logo" class="image img-fluid mb-4" style="float: left; margin-right: 20px;">
+    <div class="text"  style="margin-left: 50px;">
+        <p style="text-align: left; font-size: 20px; font-weight: bold;">¡Bienevnido a la app Halcón!</p>
+    </div>
+</div>
 
-    </body>
+
+</body>

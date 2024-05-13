@@ -16,7 +16,7 @@
 
 <nav class="navbar navbar-expand-lg bg-white">
   <div class="container-fluid">
-    <a class="navbar-brand">
+    <a class="navbar-brand" href="{{ route('dashboard') }}">
         <img src="https://lh3.googleusercontent.com/drive-viewer/AKGpihYMznxVPu8Sxmm_bqDll-nv_fboGXcTO8kY0KLa9gQL7H1vK_upUUJyoxfwXZqRUVi-_nEbzsrExI3T-hW11A8Z0aF9-Thhew=s2560" alt=""  width="70" height="70">
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
