@@ -52,4 +52,16 @@ class Order extends Model
         ->get();
        
     }
+
+    static function orden_de_cliente($idcliente,$idorden){
+        return Order::join('customers','customers.id', '=','orders.customer_id')
+        ->join('statuses','statuses.id', '=','orders.status_id')
+        ->join('products','products.id', '=','orders.product_id')
+        ->select('orders.product_id','orders.customer_id','orders.id','customers.username','statuses.status','orders.address','orders.order_date','products.product_name','orders.ordered_quantity','products.available_quantity','orders.PathPhoto1','orders.PathPhoto2')
+        ->where('orders.customer_id',$idcliente)
+        ->where('orders.id',$idorden)
+        ->where('orders.active',true)
+        ->get();
+       
+    }
 }

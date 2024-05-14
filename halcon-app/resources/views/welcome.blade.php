@@ -70,7 +70,7 @@
                             <nav class="-mx-3 flex flex-1 justify-center">
 
                                     <a
-                                        href="{{ url('/public_clients') }}"
+                                        href="http://localhost:5173/"
                                         class="rounded-md px-3 py-2 text-black bg-gray-200 ring-1 ring-gray-200 transition hover:text-black/70 hover:bg-gray-300 focus:outline-none focus-visible:ring-[#FF2D20] dark:text-white dark:bg-gray-800 dark:hover:text-black/80 dark:focus-visible:ring-white"
                                     >
                                         Get orders by client (Public)
